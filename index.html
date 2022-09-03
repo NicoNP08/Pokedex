@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
     <script src="/src/main.js" type="module" defer></script>
-    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/main.css" />
   </head>
   <body>
     <div class="initial_interfeis">
@@ -16,7 +16,48 @@
       </button>
     </div>
     <div class="app" id="app">
-      <h1>dadadadadadada</h1>
+      <nav class="nav_bar">
+        <div class="nav_title">
+          <img src="img/pokebola.png" alt="" />
+          <h1>POKÉDEX</h1>
+        </div>
+        <div class="nav_main">
+          <p>Tipo</p>
+          <input type="checkbox" name="" id="checkTypeList" />
+          <input
+            list="type_List"
+            name=""
+            id="Types_Selector"
+            placeholder="Selecciona un tipo"
+            disabled
+          />
+          <datalist name="Pokemon_Types" id="type_List">
+            <option class="option" value="Normal"></option>
+            <option class="option" value="Lucha"></option>
+            <option class="option" value="Volador"></option>
+            <option class="option" value="Veneno"></option>
+            <option class="option" value="Tierra"></option>
+            <option class="option" value="Roca"></option>
+            <option class="option" value="Bicho"></option>
+            <option class="option" value="Fantasma"></option>
+            <option class="option" value="Acero"></option>
+            <option class="option" value="Fuego"></option>
+            <option class="option" value="Agua"></option>
+            <option class="option" value="Planta"></option>
+            <option class="option" value="Electrico"></option>
+            <option class="option" value="Psiquico"></option>
+            <option class="option" value="Hielo"></option>
+            <option class="option" value="Dragon"></option>
+            <option class="option" value="Siniestro"></option>
+            <option class="option" value="Hada"></option>
+          </datalist>
+        </div>
+        <div class="search_bar">
+          <input type="search" name="" id="input_Search" class="input_Search" />
+          <img src="img/buscarIcon.png" alt="" class="search_Icon" />
+        </div>
+        <img src="img/hamburguesa.png" alt="" class="close_btn" />
+      </nav>
     </div>
   </body>
 </html>
