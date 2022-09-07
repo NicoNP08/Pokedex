@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pokedex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    
+    
+    <script type="module" crossorigin src="/Pokedex/assets/index.c1363f45.js"></script>
+    <link rel="stylesheet" href="/Pokedex/assets/index.028928b6.css">
+  </head>
+  <body>
+    <div class="initial_interfeis">
+      <img src="img/pokemon.png" alt="" />
+      <button class="pokeBoton" id="pokeBotonInit">
+        <img src="img/pokebola.png" alt="" />
+      </button>
+    </div>
+    <div class="app" id="app">
+      <nav class="nav_bar">
+        <div class="nav_title">
+          <img src="img/pokebola.png" alt="" />
+          <h1>POKÉDEX</h1>
+        </div>
+        <div class="nav_main">
+          <p>Tipo</p>
+          <input type="checkbox" name="" id="checkTypeList" />
+          <input
+            list="type_List"
+            name=""
+            id="Types_Selector"
+            placeholder="Selecciona un tipo"
+            disabled
+          />
+          <datalist name="Pokemon_Types" id="type_List">
+            <option class="option" value="Normal"></option>
+            <option class="option" value="Lucha"></option>
+            <option class="option" value="Volador"></option>
+            <option class="option" value="Veneno"></option>
+            <option class="option" value="Tierra"></option>
+            <option class="option" value="Roca"></option>
+            <option class="option" value="Bicho"></option>
+            <option class="option" value="Fantasma"></option>
+            <option class="option" value="Acero"></option>
+            <option class="option" value="Fuego"></option>
+            <option class="option" value="Agua"></option>
+            <option class="option" value="Planta"></option>
+            <option class="option" value="Electrico"></option>
+            <option class="option" value="Psiquico"></option>
+            <option class="option" value="Hielo"></option>
+            <option class="option" value="Dragon"></option>
+            <option class="option" value="Siniestro"></option>
+            <option class="option" value="Hada"></option>
+          </datalist>
+        </div>
+        <div class="search_bar">
+          <input type="search" name="" id="input_Search" class="input_Search" />
+          <img src="img/buscarIcon.png" alt="" class="search_Icon" />
+        </div>
+        <img src="img/hamburguesa.png" alt="" class="close_btn" />
+      </nav>
+    </div>
+  </body>
+</html>
