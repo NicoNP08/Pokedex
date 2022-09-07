@@ -3,7 +3,11 @@ import {
   pokemonTypesHinglich,
   pokemonTypesHespanich,
 } from "./pokeApi";
+import { main_Contain } from "./main.js";
 import styles from "./styles/pokemon.module.css";
+
+import { Chart, registerables } from "chart.js";
+Chart.register(...registerables);
 
 async function create_Grid(poke_Array) {
   const poke_Grid = document.createElement("div");
@@ -98,7 +102,95 @@ function create_Card(pokemon_Info) {
   return poke_Card;
 }
 function create_Pkm_Inf(pokemon_Info) {
-  console.log(pokemon_Info.name);
+  const poke_Info_Cont = document.createElement("div");
+  const poke_Title_Cont = document.createElement("div");
+  const poke_Img_Cont = document.createElement("div");
+  const poke_Stats_Cont = document.createElement("div");
+  const poke_Types_Cont = document.createElement("div");
+  const poke_Chart_Cont = document.createElement("div");
+  poke_Info_Cont.classList.add(styles.poke_Info_container);
+  poke_Title_Cont.classList.add(styles.poke_Title_container);
+  poke_Img_Cont.classList.add(styles.poke_Img_container);
+  poke_Stats_Cont.classList.add(styles.poke_Stats_container);
+  poke_Types_Cont.classList.add(styles.tipos_Pok);
+  poke_Chart_Cont.classList.add(styles.tablita_Pok);
+
+  const title_Name = document.createElement("h2");
+  title_Name.textContent = `${pokemon_Info.name}  ID: ${pokemon_Info.id} `;
+
+  const poke_Img_Inf = document.createElement("img");
+  poke_Img_Inf.src = pokemon_Info.sprites.front_default;
+  const main_TypeP = [pokemon_Info.types[0].type.name];
+  const tipos1 = document.createElement("span");
+  tipos1.textContent = `${pokemonTypesHespanich[main_TypeP]}`;
+  tipos1.classList.add(
+    styles.pokemon_TipoBase,
+    styles[`pokeTipo_${main_TypeP}`]
+  );
+  poke_Types_Cont.append(tipos1);
+  if (pokemon_Info.types.length > 1) {
+    const tipos2 = document.createElement("span");
+    const secondaryTypeP = [pokemon_Info.types[1].type.name];
+    tipos2.textContent = pokemonTypesHespanich[secondaryTypeP];
+    tipos2.classList.add(
+      styles.pokemon_TipoBase,
+      styles[`pokeTipo_${secondaryTypeP}`]
+    );
+    poke_Types_Cont.append(tipos2);
+  }
+
+  const stats_Peso = document.createElement("h3");
+  stats_Peso.textContent = `Peso: ${pokemon_Info.weight}`;
+
+  const tabla_Inf = document.createElement("canvas");
+
+  const labels = [];
+  const data = [];
+  pokemon_Info.stats.forEach((statInfo) => {
+    labels.push(statInfo.stat.name);
+    data.push(statInfo.base_stat);
+  });
+  const grafica = new Chart(tabla_Inf, {
+    type: "bar",
+    data: {
+      labels,
+      datasets: [
+        {
+          label: "Stats",
+          data,
+          backgroundColor: ["#ff1100"],
+        },
+      ],
+    },
+    options: {
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          max: 160,
+        },
+      },
+    },
+  });
+
+  poke_Stats_Cont.append(stats_Peso);
+  poke_Chart_Cont.append(tabla_Inf);
+  poke_Img_Cont.append(poke_Img_Inf);
+  poke_Title_Cont.append(title_Name);
+  poke_Info_Cont.append(
+    poke_Title_Cont,
+    poke_Img_Cont,
+    poke_Stats_Cont,
+    poke_Types_Cont,
+    poke_Chart_Cont
+  );
+  const exit = document.createElement("span");
+  exit.textContent = "X";
+  exit.classList = styles.salida;
+  exit.addEventListener("click", () => {
+    main_Contain.removeChild(poke_Info_Cont);
+  });
+  poke_Info_Cont.append(exit);
+  main_Contain.append(poke_Info_Cont);
 }
 
 export { create_Grid, create_Type_Grid, create_Unit_Grid };
