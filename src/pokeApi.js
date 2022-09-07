@@ -1,7 +1,9 @@
 const enlaceBase = "https://pokeapi.co/api/v2";
 
-async function getPokemons() {
-  const pokemonsResponse = await fetch(`${enlaceBase}/pokemon/?limit=20`);
+async function getPokemons({ limit = 24, offset = 0 } = {}) {
+  const pokemonsResponse = await fetch(
+    `${enlaceBase}/pokemon/?limit=${limit}&offset=${offset} `
+  );
   const pokemonosReales = await pokemonsResponse.json();
   return pokemonosReales;
 }
@@ -11,14 +13,14 @@ async function getPokemonUnit(query = 1) {
   return pokeRealUnit;
 }
 async function getPokemonTypes(query = "normal") {
-  query = pokemonTypes[query];
-  const pokeResponseType = await fetch(`${enlaceBase}/type/${query}`);
+  query = pokemonTypesHinglich[query];
+  const pokeResponseType = await fetch(`${enlaceBase}/type/${query}?limit=20`);
   const pokeRealType = await pokeResponseType.json();
-  console.log(pokeRealType);
+  return pokeRealType;
 }
-const pokemonTypes = {
+const pokemonTypesHinglich = {
   Normal: "normal",
-  Lucha: "fighting",
+  Luchador: "fighting",
   Volador: "flying",
   Veneno: "poison",
   Tierra: "ground",
@@ -36,4 +38,19 @@ const pokemonTypes = {
   Siniestro: "dark",
   Hada: "fairy",
 };
-export { getPokemons, getPokemonTypes, getPokemonUnit };
+const pokemonTypesHespanich = Object.entries(pokemonTypesHinglich).reduce(
+  (ret, entry) => {
+    const [key, value] = entry;
+    ret[value] = key;
+    return ret;
+  },
+  {}
+);
+
+export {
+  getPokemons,
+  getPokemonTypes,
+  getPokemonUnit,
+  pokemonTypesHinglich,
+  pokemonTypesHespanich,
+};

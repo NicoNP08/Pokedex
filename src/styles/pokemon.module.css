@@ -1,27 +1,109 @@
 .poke_Grid {
   width: 100%;
   display: grid;
+  margin-top: 10px;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 300px;
   gap: 10px;
+  justify-items: center;
 }
 .poke_Card {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  border-radius: 50px;
 }
 .card_Head {
-  font-size: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(221, 218, 218);
+  border-radius: 25px 25px 0 0;
 }
 .card_Body {
+  display: flex;
+  height: 100%;
+  background-color: #f2f2f2;
+  justify-content: center;
+  border-radius: 0 0 25px 25px;
 }
 .types_Container {
+  align-items: center;
+  display: flex;
+  padding: 10px;
 }
 .pokemon_Name {
+  margin-left: 15px;
+  font-size: 30px;
+}
+.pokemon_Name::first-letter,
+.pokemon_TipoBase::first-letter {
+  text-transform: uppercase;
 }
 .pokemon_Id {
+  margin-left: 15px;
+  font-size: 20px;
+  color: rgb(97, 97, 97);
 }
-.pokemon_TipoP {
+.pokemon_TipoBase {
+  background-color: grey;
+  padding: 5px 20px;
+  border-radius: 25px;
 }
-.pokemon_TipoS {
-}
+
 .poke_Img {
+}
+
+.pokeTipo_normal {
+  background-color: #a4acaf;
+}
+.pokeTipo_fighting {
+  background-color: #d56723;
+}
+.pokeTipo_flying {
+  background: linear-gradient(180deg, #3dc7ef 50%, #bdb9b8 50%);
+}
+.pokeTipo_poison {
+  background-color: #b97fc9;
+}
+.pokeTipo_ground {
+  background: linear-gradient(180deg, #f7de3f 50%, #ab9842 50%);
+}
+.pokeTipo_rock {
+  background-color: #a38c21;
+}
+.pokeTipo_bug {
+  background-color: #729f3f;
+}
+.pokeTipo_ghost {
+  background-color: #7b62a3;
+}
+.pokeTipo_steel {
+  background-color: #9eb7b8;
+}
+.pokeTipo_fire {
+  background-color: #fd7d24;
+}
+.pokeTipo_water {
+  background-color: #4592c4;
+}
+.pokeTipo_grass {
+  background-color: #9bcc50;
+}
+.pokeTipo_electric {
+  background-color: #eed535;
+}
+.pokeTipo_psychic {
+  background-color: #f366b9;
+}
+.pokeTipo_ice {
+  background-color: #51c4e7;
+}
+.pokeTipo_dragon {
+  background: linear-gradient(180deg, #53a4cf 50%, #f16e57 50%);
+}
+.pokeTipo_dark {
+  background-color: #707070;
+}
+.pokeTipo_fairy {
+  background-color: #fdb9e9;
 }
